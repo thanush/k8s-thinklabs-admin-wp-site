@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: thinklabs-blog
+  name: thinklabs-blog-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: thinklabs-blog
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

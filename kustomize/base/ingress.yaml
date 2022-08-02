@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: thinklabs-blog
+  name: thinklabs-blog-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/app-root: /foo
+    nginx.ingress.kubernetes.io/server-snippet: |
+      more_set_headers "X-Forwarded-Proto: https";
+      more_set_headers "use-forwarded-headers: true";
+
+    # nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - nginx.thinklabs.io
+        - www.nginx.thinklabs.io
+  rules:
+    - host: nginx.thinklabs.io
+      http:
+        paths:
+          - path: /foo
+            pathType: Prefix
+            backend:
+              service:
+                name: thinklabs-blog-svc
+                port:
+                  number: 80
+                  

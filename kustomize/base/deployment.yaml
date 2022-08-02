@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: thinklabs-blog
+  labels:
+    app: thinklabs-blog
+  name: thinklabs-blog
+spec:
+  selector:
+    matchLabels:
+      app: thinklabs-blog
+  template:
+    metadata:
+      labels:
+        app: thinklabs-blog
+    spec:
+      containers:
+        - image: wordpress:6.0.1-fpm
+          name: thinklabs-blog
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: thinklabs-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
+            - name: WORDPRESS_DB_USER
+              value: 'thinklabs'
+            - name: WORDPRESS_DB_PASSWORD
+              value: 'USIONVURLbAc'
+            - name: WORDPRESS_DB_NAME
+              value: 'thinklabs_blog'
+            - name: WORDPRESS_DEBUG
+              value: "true"
+            - name: WORDPRESS_CONFIG_EXTRA
+              value: |
+                  define('FORCE_SSL_ADMIN', true);
+          ports:
+          - containerPort: 80
+            name: wordpress
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 500m
+            limits:
+              memory: 512Mi
+              cpu: 500m
+      restartPolicy: Always

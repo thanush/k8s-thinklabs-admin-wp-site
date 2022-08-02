@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  use-forwarded-headers: "true"
+  proxy-set-headers: default/custom-headers
+  X-Forwarded-Proto: https
+kind: ConfigMap
+metadata:
+  name: custom-headers
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx

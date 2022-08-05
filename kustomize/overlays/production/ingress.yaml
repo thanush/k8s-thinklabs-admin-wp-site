@@ -17,11 +17,11 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - nginx.thinklabs.io
-        - www.nginx.thinklabs.io
+        - 8skills.co
+        - www.8skills.co
       secretName: thinklab-io-tls
   rules:
-    - host: nginx.thinklabs.io
+    - host: 8skills.co
       http:
         paths:
           - path: /blog

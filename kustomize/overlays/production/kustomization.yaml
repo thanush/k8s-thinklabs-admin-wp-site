@@ -1,5 +1,9 @@
 resources:
   - ../../base
 
+patchesStrategicMerge:
+  - deployment.yaml
+  - ingress.yaml
+
 nameSuffix: -production
 namespace: thinklabs-blog-production

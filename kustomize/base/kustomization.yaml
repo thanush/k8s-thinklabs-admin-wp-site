@@ -6,4 +6,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+  - storageclass.yaml
+  - pvc.yaml
   # - custom-headers.yaml

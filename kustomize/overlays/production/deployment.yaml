@@ -15,7 +15,7 @@ spec:
         app: thinklabs-blog
     spec:
       containers:
-        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04326
+        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04307
           name: thinklabs-blog
           env:
             - name: WORDPRESS_DB_HOST

@@ -14,6 +14,10 @@ spec:
       labels:
         app: thinklabs-blog
     spec:
+      volumes:
+      - name: thinklabs-blog-volume
+        persistentVolumeClaim:
+          claimName: thinklabs-blog-claim
       containers:
         - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04326
           name: thinklabs-blog
@@ -30,6 +34,9 @@ spec:
           ports:
           - containerPort: 80
             name: wordpress
+          volumeMounts:
+          - name: thinklabs-blog-volume
+            mountPath: /var/www/html
           resources:
             requests:
               memory: 512Mi

@@ -159,6 +159,8 @@ RUN set -eux; \
 	chown -R www-data:www-data wp-content; \
 	chmod -R 777 wp-content
 
+COPY --chown=root:root wordpress.ini /usr/local/etc/php/conf.d/wordpress.ini
+
 VOLUME /var/www/html/blog
 WORKDIR /var/www/html/blog
 

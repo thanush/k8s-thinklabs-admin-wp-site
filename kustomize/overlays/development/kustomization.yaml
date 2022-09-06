@@ -4,6 +4,8 @@ resources:
 patchesStrategicMerge:
   - deployment.yaml
   - ingress.yaml
+  - storageclass.yaml
+  - pvc.yaml
 
 nameSuffix: -development
 namespace: thinklabs-blog-development

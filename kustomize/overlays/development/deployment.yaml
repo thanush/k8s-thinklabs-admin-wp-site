@@ -14,8 +14,12 @@ spec:
       labels:
         app: thinklabs-blog
     spec:
+      volumes:
+      - name: thinklabs-blog-volume
+        persistentVolumeClaim:
+          claimName: thinklabs-blog-claim
       containers:
-        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04326
+        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04307
           name: thinklabs-blog
           env:
             - name: WORDPRESS_DB_HOST
@@ -26,7 +30,9 @@ spec:
               value: 'USIONVURLbAc'
             - name: WORDPRESS_DB_NAME
               value: 'thinklabs_blog_dev'
-
+          volumeMounts:
+          - name: thinklabs-blog-volume
+            mountPath: /var/www/html
           ports:
           - containerPort: 80
             name: wordpress

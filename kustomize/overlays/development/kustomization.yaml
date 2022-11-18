@@ -8,4 +8,4 @@ patchesStrategicMerge:
   - pvc.yaml
 
 nameSuffix: -development
-namespace: thinklabs-blog-development
+namespace: carwash-blog-development

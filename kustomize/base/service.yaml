@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: thinklabs-blog-svc
+  name: carwash-blog-svc
 spec:
   type: ClusterIP
   selector:
-    app: thinklabs-blog
+    app: carwash-blog
   ports:
     - name: http
       port: 80

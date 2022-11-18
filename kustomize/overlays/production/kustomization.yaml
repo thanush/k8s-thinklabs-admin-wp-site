@@ -6,4 +6,4 @@ patchesStrategicMerge:
   - ingress.yaml
 
 nameSuffix: -production
-namespace: thinklabs-blog-production
+namespace: carwash-blog-production

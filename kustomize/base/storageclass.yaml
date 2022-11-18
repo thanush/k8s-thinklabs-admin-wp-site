@@ -1,7 +1,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: thinklabs-blog-sc
-  namespace: thinklabs-blog
+  name: carwash-blog-sc
+  namespace: carwash-blog
 provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer

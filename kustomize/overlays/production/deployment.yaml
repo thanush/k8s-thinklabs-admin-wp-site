@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: thinklabs-blog
+  namespace: carwash-blog
   labels:
-    app: thinklabs-blog
-  name: thinklabs-blog
+    app: carwash-blog
+  name: carwash-blog
 spec:
   selector:
     matchLabels:
-      app: thinklabs-blog
+      app: carwash-blog
   template:
     metadata:
       labels:
-        app: thinklabs-blog
+        app: carwash-blog
     spec:
       containers:
-        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/thinklabs-blog-wordpress:04307
-          name: thinklabs-blog
+        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/carwash-blog-wordpress:04307
+          name: carwash-blog
           env:
             - name: WORDPRESS_DB_HOST
-              value: thinklabs-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
+              value: carwash-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
             - name: WORDPRESS_DB_USER
-              value: 'thinklabs'
+              value: 'carwash'
             - name: WORDPRESS_DB_PASSWORD
               value: 'USIONVURLbAc'
             - name: WORDPRESS_DB_NAME
-              value: 'thinklabs_blog'
+              value: 'carwash_blog'
 
           ports:
           - containerPort: 80

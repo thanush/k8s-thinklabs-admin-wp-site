@@ -161,8 +161,8 @@ RUN set -eux; \
 
 COPY --chown=root:root wordpress.ini /usr/local/etc/php/conf.d/wordpress.ini
 
-VOLUME /var/www/html/blog
-WORKDIR /var/www/html/blog
+VOLUME /var/www/html
+WORKDIR /var/www/html
 
 COPY --chown=www-data:www-data wp-config-docker.php /usr/src/wordpress/
 COPY docker-entrypoint.sh /usr/local/bin/

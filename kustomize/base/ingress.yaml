@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: carwash-blog
-  name: carwash-blog-ingress
+  namespace: thinklabs-wp-site
+  name: thinklabs-wp-site-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
@@ -20,17 +20,17 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - containerslab.com
+        - wp-dev.thinklabs.io
       secretName: thinklab-io-tls
   rules:
-    - host: containerslab.com
+    - host: wp-dev.thinklabs.io
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: carwash-blog-svc
+                name: thinklabs-wp-site-svc
                 port:
                   number: 80
                   

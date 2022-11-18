@@ -3,7 +3,9 @@ resources:
 
 patchesStrategicMerge:
   - deployment.yaml
+  - service.yaml
   - ingress.yaml
+  - storageclass.yaml
+  - pvc.yaml
 
-nameSuffix: -production
-namespace: carwash-blog-production
+namespace: thinklabs-wp-site

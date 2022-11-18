@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: carwash-blog-claim
-  namespace: carwash-blog
+  name: thinklabs-wp-site-claim
+  namespace: thinklabs-wp-site
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: carwash-blog-sc
+  storageClassName: thinklabs-wp-site-sc
   resources:
     requests:
       storage: 40Gi

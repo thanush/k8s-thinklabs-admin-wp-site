@@ -1,32 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: carwash-blog
+  namespace: thinklabs-wp
   labels:
-    app: carwash-blog
-  name: carwash-blog
+    app: thinklabs-wp-site-deployment
+  name: thinklabs-wp-site-deployment
 spec:
   selector:
     matchLabels:
-      app: carwash-blog
+      app: thinklabs-wp-site-deployment
   template:
     metadata:
       labels:
-        app: carwash-blog
+        app: thinklabs-wp-site-deployment
     spec:
+      volumes:
+      - name: thinklabs-wp-site-deployment-volume
+        persistentVolumeClaim:
+          claimName: thinklabs-wp-site-claim
       containers:
-        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/carwash-blog-wordpress:04307
-          name: carwash-blog
+        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/wordpress-6:latest
+          name: thinklabs-wp-site-deployment
           env:
             - name: WORDPRESS_DB_HOST
-              value: carwash-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
+              value: thinklabs-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
             - name: WORDPRESS_DB_USER
-              value: 'carwash'
+              value: 'thinklabs'
             - name: WORDPRESS_DB_PASSWORD
               value: 'USIONVURLbAc'
             - name: WORDPRESS_DB_NAME
-              value: 'carwash_blog'
-
+              value: 'thinklabs_wp_site'
+          volumeMounts:
+          - name: thinklabs-wp-site-deployment-volume
+            mountPath: /var/www/html
           ports:
           - containerPort: 80
             name: wordpress

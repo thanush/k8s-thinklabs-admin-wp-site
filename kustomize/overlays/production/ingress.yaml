@@ -1,34 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: carwash-blog
-  name: carwash-blog-ingress
+  namespace: thinklabs-wp-site
+  name: thinklabs-wp-site-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/server-snippet: |
       more_set_headers "X-Forwarded-Proto: https";
       more_set_headers "use-forwarded-headers: true";
-
-    # nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - 8skills.co
-        - www.8skills.co
+        - wp-dev.thinklabs.io
       secretName: thinklab-io-tls
   rules:
-    - host: 8skills.co
+    - host: wp-dev.thinklabs.io
       http:
         paths:
-          - path: /blog
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: carwash-blog-svc
+                name: thinklabs-wp-site-svc
                 port:
                   number: 80
                   

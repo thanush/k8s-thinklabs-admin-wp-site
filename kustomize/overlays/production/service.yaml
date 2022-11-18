@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: thinklabs-wp-site
+    app: thinklabs-wp-site-deployment
   ports:
     - name: http
       port: 80

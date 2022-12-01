@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: thinklabs-wp-site-claim
-  namespace: thinklabs-wp-site
+  name: thinklabs-wp-admin-site-claim
+  namespace: thinklabs-wp-admin-site
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: thinklabs-wp-site-sc
+  storageClassName: thinklabs-wp-admin-site-sc
   resources:
     requests:
       storage: 40Gi

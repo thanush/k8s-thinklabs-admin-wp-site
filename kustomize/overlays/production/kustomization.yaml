@@ -8,4 +8,4 @@ patchesStrategicMerge:
   - storageclass.yaml
   - pvc.yaml
 
-namespace: thinklabs-wp-site
+namespace: thinklabs-wp-admin-site

@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: thinklabs-wp
+  namespace: thinklabs-wp-admin
   labels:
-    app: thinklabs-wp-site-deployment
-  name: thinklabs-wp-site-deployment
+    app: thinklabs-wp-admin-site-deployment
+  name: thinklabs-wp-admin-site-deployment
 spec:
   selector:
     matchLabels:
-      app: thinklabs-wp-site-deployment
+      app: thinklabs-wp-admin-site-deployment
   template:
     metadata:
       labels:
-        app: thinklabs-wp-site-deployment
+        app: thinklabs-wp-admin-site-deployment
     spec:
       volumes:
-      - name: thinklabs-wp-site-deployment-volume
+      - name: thinklabs-wp-admin-site-deployment-volume
         persistentVolumeClaim:
-          claimName: thinklabs-wp-site-claim
+          claimName: thinklabs-wp-admin-site-claim
       containers:
-        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/wordpress-6:latest
-          name: thinklabs-wp-site-deployment
+        - image: 859856990833.dkr.ecr.us-east-2.amazonaws.com/carwash-blog:08092022
+          name: thinklabs-wp-admin-site-deployment
           env:
             - name: WORDPRESS_DB_HOST
               value: thinklabs-db.c9y241ptyj2k.us-east-2.rds.amazonaws.com
@@ -29,9 +29,9 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               value: 'USIONVURLbAc'
             - name: WORDPRESS_DB_NAME
-              value: 'thinklabs_wp_site'
+              value: 'thinklabs_wp_admin'
           volumeMounts:
-          - name: thinklabs-wp-site-deployment-volume
+          - name: thinklabs-wp-admin-site-deployment-volume
             mountPath: /var/www/html
           ports:
           - containerPort: 80
